@@ -4,6 +4,8 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 
+appsettings.json
+
 # Created by https://www.toptal.com/developers/gitignore/api/rider,csharp,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=rider,csharp,visualstudio
 

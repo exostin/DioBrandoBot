@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DioBrando_DiscordBot", "DioBrando_DiscordBot\DioBrando_DiscordBot.csproj", "{50680E90-2FEF-4480-8C87-88ED63C46DCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50680E90-2FEF-4480-8C87-88ED63C46DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50680E90-2FEF-4480-8C87-88ED63C46DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50680E90-2FEF-4480-8C87-88ED63C46DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50680E90-2FEF-4480-8C87-88ED63C46DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
