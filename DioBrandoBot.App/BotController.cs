@@ -41,13 +41,13 @@ public class BotController
 
         _dc.TypingStarted += async (s, e) =>
         {
-            // only at #text-talk
-            if (e.Channel.Id == 784147362468593675 && e.User.Username is "Nyarlamaru" or "exostin")
+            if (e.StartedAt < DateTimeOffset.Now.AddSeconds(-5))
             {
                 var channelMessages = await e.Channel.GetMessagesAsync(15);
                 var previousUserMessages = channelMessages.Where(x => x.Author == e.User).Select(x => x.Content);
                 var prediction = _ai.PredictNextLine(previousUserMessages);
-                await e.Channel.SendMessageAsync($"{e.User.Mention} your next line is... \"{prediction}\"");
+                if (e.StartedAt < DateTimeOffset.Now.AddSeconds(-15))
+                    await e.Channel.SendMessageAsync($"{e.User.Mention} your next line is... \"{prediction}\"");
             }
         };
     }
