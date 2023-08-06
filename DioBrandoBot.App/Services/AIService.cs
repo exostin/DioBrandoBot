@@ -1,4 +1,4 @@
-﻿namespace DioBrandoBot.Services;
+﻿namespace DioBrandoBot.App.Services;
 
 public class AiService : IAiService
 {

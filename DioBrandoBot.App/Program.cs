@@ -1,13 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration.Json;
+﻿using DioBrandoBot.App.Services;
 using DSharpPlus;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace DioBrandoBot
+namespace DioBrandoBot.App
 {
     public static class Program
     {
@@ -20,24 +17,26 @@ namespace DioBrandoBot
                 .SetBasePath(baseDirectoryPath!.FullName)
                 .AddJsonFile("appsettings.json", false, true)
                 .Build();
-            
-            var serviceCollection = new ServiceCollection();
-            
+            var services = new ServiceCollection();
+            ConfigureServices(services, configuration);
+            await using var serviceProvider = services.BuildServiceProvider();
+            var bot = ActivatorUtilities.CreateInstance<BotController>(serviceProvider);
+            await bot.Run();
+        }
+        
+        private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        {
             var discordClientConfiguration = new DiscordConfiguration
             {
-                Token = configuration.GetSection("DISCORD_BOT_TOKEN").Value,
+                Token = configuration.GetSection("DISCORD_BOT_TOKEN").Value ?? throw new InvalidOperationException("Couldn't get the Discord bot token!"),
                 TokenType = TokenType.Bot,
                 Intents = DiscordIntents.AllUnprivileged | DiscordIntents.MessageContents
             };
             var discordClient = new DiscordClient(discordClientConfiguration);
-            serviceCollection.AddScoped<DiscordClient>(x => discordClient);
-
-            serviceCollection.AddScoped<ILogger>();
+            services.AddScoped<DiscordClient>(x => discordClient);
             
-            var buildServiceProvider = serviceCollection.BuildServiceProvider();
-            var bot = ActivatorUtilities.CreateInstance<BotController>(buildServiceProvider);
-            
-            await bot.Run();
+            services.AddScoped<IAiService, AiService>();
+            services.AddLogging(x => x.AddConsole()).AddTransient<BotController>();
         }
     }
 }
