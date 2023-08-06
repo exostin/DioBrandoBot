@@ -6,4 +6,9 @@ public class AiService : IAiService
     {
         return "";
     }
+
+    public string Respond(string messageContent)
+    {
+        return "WRRRYYYYYYY";
+    }
 }

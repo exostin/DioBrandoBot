@@ -35,7 +35,8 @@ public class BotController
         _dc.MessageCreated += async (s, e) =>
         {
             _log.LogInformation("Dio message event triggered by: [{ArgsAuthor}]: [{MessageContent}]", e.Author, e.Message.Content);
-            if (e.Message.Content.ToLower().StartsWith("dio")) await e.Message.RespondAsync("WRRRRYYYYYYYYYYY");
+            var response = _ai.Respond(e.Message.Content);
+            if (e.Message.Content.ToLower().StartsWith("dio")) await e.Message.RespondAsync(response);
         };
 
         _dc.TypingStarted += async (s, e) =>
