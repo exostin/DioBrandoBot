@@ -2,7 +2,7 @@
 
 public class AiService : IAiService
 {
-    public string PredictNextLine(IEnumerable<string> previousLines)
+    public string PredictNextMessage(IEnumerable<string> previousMessages)
     {
         return "";
     }

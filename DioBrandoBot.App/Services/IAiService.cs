@@ -2,6 +2,6 @@
 
 public interface IAiService
 {
-    string PredictNextLine(IEnumerable<string> previousLines);
+    string PredictNextMessage(IEnumerable<string> previousMessages);
     string Respond(string messageContent);
 }
