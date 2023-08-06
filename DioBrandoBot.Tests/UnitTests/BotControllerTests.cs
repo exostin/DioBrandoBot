@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace DioBrandoBot.Tests.Tests;
+namespace DioBrandoBot.Tests.UnitTests;
 
 public class BotControllerTests
 {

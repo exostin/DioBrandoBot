@@ -1,7 +1,7 @@
 ﻿using DioBrandoBot.App.Commands;
 using DioBrandoBot.App.Services;
 
-namespace DioBrandoBot.Tests.Tests;
+namespace DioBrandoBot.Tests.UnitTests;
 
 public class SlashCommandsTests
 {
