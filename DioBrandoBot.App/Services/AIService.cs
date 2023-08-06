@@ -2,12 +2,12 @@
 
 public class AiService : IAiService
 {
-    public string Respond(string messageContent)
+    public string GenerateResponse(string messageContent)
     {
         return "WRRRYYYYYYY";
     }
 
-    public string PredictNextMessage(IEnumerable<string> previousMessages)
+    public string GenerateNextMessagePrediction(IEnumerable<string> previousMessages)
     {
         return "";
     }

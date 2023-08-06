@@ -18,7 +18,7 @@ public class SlashCommands : ApplicationCommandModule
     public async Task PredictNextMessage(InteractionContext ctx)
     {
         var previousMessages = await ctx.Channel.GetMessagesAsync(30);
-        var prediction = _ai.PredictNextMessage(previousMessages.Select(x => x.Content));
+        var prediction = _ai.GenerateNextMessagePrediction(previousMessages.Select(x => x.Content));
         await ctx.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DiscordInteractionResponseBuilder()
             .WithContent($"{ctx.User.Mention} next you'll say... {prediction}"));
     }
