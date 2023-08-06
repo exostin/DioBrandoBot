@@ -22,4 +22,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DioBrandoBot.App\DioBrandoBot.App.csproj" />
+    </ItemGroup>
+
 </Project>
